@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HinweisgeberApp", "HinweisgeberApp\HinweisgeberApp.csproj", "{85AF5C73-DA04-4BF3-AB6D-E326C8C3F67F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85AF5C73-DA04-4BF3-AB6D-E326C8C3F67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85AF5C73-DA04-4BF3-AB6D-E326C8C3F67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85AF5C73-DA04-4BF3-AB6D-E326C8C3F67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85AF5C73-DA04-4BF3-AB6D-E326C8C3F67F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BBFFA139-070D-4044-898E-C675F30A5FA4}
+	EndGlobalSection
+EndGlobal
