@@ -1,28 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\muzeb\\source\\repos\\GitHub\\GioRWTH\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj": {}
+    "C:\\Users\\Administrator1\\source\\repos\\GithubNeu\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\muzeb\\source\\repos\\GitHub\\GioRWTH\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj": {
+    "C:\\Users\\Administrator1\\source\\repos\\GithubNeu\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\muzeb\\source\\repos\\GitHub\\GioRWTH\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator1\\source\\repos\\GithubNeu\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj",
         "projectName": "HinweisgeberApp",
-        "projectPath": "C:\\Users\\muzeb\\source\\repos\\GitHub\\GioRWTH\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj",
-        "packagesPath": "C:\\Users\\muzeb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\muzeb\\source\\repos\\GitHub\\GioRWTH\\HinweisgeberApp\\HinweisgeberApp\\obj\\",
+        "projectPath": "C:\\Users\\Administrator1\\source\\repos\\GithubNeu\\HinweisgeberApp\\HinweisgeberApp\\HinweisgeberApp.csproj",
+        "packagesPath": "C:\\Users\\Administrator1\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator1\\source\\repos\\GithubNeu\\HinweisgeberApp\\HinweisgeberApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\muzeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrator1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -44,9 +44,27 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "EntityFramework": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[6.4.4, )"
+              "version": "[6.1.1, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.25, )"
             }
           },
           "imports": [
@@ -55,8 +73,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -68,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.125\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -15,7 +15,7 @@ namespace HinweisgeberApp.Data
         public string Email { get; set; }
 
         [ForeignKey(nameof(Partner))]
-        public int PartnerId { get; set; }
+        public Guid PartnerId { get; set; }
         public virtual Partner Partner { get; set; }
     }
 }
