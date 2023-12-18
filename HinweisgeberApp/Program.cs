@@ -19,6 +19,9 @@ namespace HinweisgeberApp
             //var optionsBuilder = new DbContextOptionsBuilder<DbHinweisContext>()
             //    .UseSqlServer("server=195.201.138.127; database = HWMainDB; user id = sa; password = 123Tobi123!; TrustServerCertificate=true;");
 
+
+            // es amoakomentare da gaushvi
+
             //using (var context = new DbHinweisContext())
             //{
             //    context.ApplyMigrations();

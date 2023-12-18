@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HinweisgeberApp.Migrations
 {
     [DbContext(typeof(DbHinweisContext))]
-    [Migration("20231211172431_newMig11")]
+    [Migration("20231217233115_newMig11")]
     partial class newMig11
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

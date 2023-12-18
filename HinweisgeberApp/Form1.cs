@@ -3,6 +3,7 @@ using HinweisgeberApp.Extensions;
 using HinweisgeberApp.Models;
 using HinweisgeberApp.Services;
 using Microsoft.EntityFrameworkCore;
+//using ZXing;
 
 namespace HinweisgeberApp
 {
@@ -25,6 +26,7 @@ namespace HinweisgeberApp
             string connectionString = KryptoExtensions.EncryptString(DbServices.GetConnectionString(textServername.Text, textAnmeldename.Text, textKennwort.Text, textDatenbankname.Text), "309C23359677");
 
             bool connectionState = _context.TestConnection();
+
             if (connectionState == true)
             {
                 Partner partner = new Partner()
@@ -38,8 +40,11 @@ namespace HinweisgeberApp
                 if (res1 == true)
                 {
                     MessageBox.Show("Partner würde hinzugefügt");
-                    ResetForm();
-                }
+					//ResetForm();
+					textDatenbankname.Clear();
+					var partnerList = GetPartners();
+					comboPartner.DataSource = partnerList.Result.Select(p => p.Name).ToList();
+				}
             }
         }
 
@@ -170,5 +175,29 @@ namespace HinweisgeberApp
             numericUpDownFilialnr.Value = 0;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //// Get parameters from TextBoxes
+            //string parameter1 = txtParameter1.Text;
+            //string parameter2 = txtParameter2.Text;
+
+            //// Concatenate parameters
+            //string url = $"http://gfi-hinweisgeber.de/{parameter1}/{parameter2}";
+
+            //// Generate QR code
+            //BarcodeWriter barcodeWriter = new BarcodeWriter();
+            //barcodeWriter.Format = BarcodeFormat.QR_CODE;
+            //barcodeWriter.Options = new ZXing.Common.EncodingOptions
+            //{
+            //    Width = 300,
+            //    Height = 300
+            //};
+
+            //// Convert to bitmap
+            //var qrCodeBitmap = barcodeWriter.Write(url);
+
+            //// Display the QR code in PictureBox
+            //pictureBoxQRCode.Image = qrCodeBitmap;
+        }
     }
 }
