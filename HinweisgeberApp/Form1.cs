@@ -2,14 +2,16 @@ using HinweisgeberApp.Data;
 using HinweisgeberApp.Extensions;
 using HinweisgeberApp.Models;
 using HinweisgeberApp.Services;
+using IronBarCode;
 using Microsoft.EntityFrameworkCore;
-//using ZXing;
 
 namespace HinweisgeberApp
 {
     public partial class partnerhinzufuegenForm : Form
     {
         private readonly DbHinweisContext _context;
+        private List<Partner> partnerList = new List<Partner>();
+        private List<Filiale> filialeList = new List<Filiale>();
         public partnerhinzufuegenForm(DbHinweisContext context)
         {
             InitializeComponent();
@@ -17,8 +19,16 @@ namespace HinweisgeberApp
             textServername.Text = "195.201.138.127";
             textAnmeldename.Text = "sa";
             textKennwort.Text = "123Tobi123!";
-            var partnerList = GetPartners();
-            comboPartner.DataSource = partnerList.Result.Select(p => p.Name).ToList();
+            var tmpfilialeList = GetFilialen();
+            filialeList = tmpfilialeList.Result.ToList();
+            var tmppartnerList = GetPartners();
+            partnerList = tmppartnerList.Result.ToList();
+            comboPartner.DataSource = partnerList.Select(p => p.Name).ToList();
+            comboPartnerQr.DataSource = partnerList.Select(p => p.Name).ToList();
+            if (partnerList.Count > 0)
+            {
+                comboFilialeQr.DataSource = filialeList.Where(p => p.PartnerId == partnerList.First().Id).Select(p => p.AnsichtName).ToList();
+            }
         }
 
         private async void AddPartnerBtn_Click(object sender, EventArgs e)
@@ -44,7 +54,8 @@ namespace HinweisgeberApp
 					textDatenbankname.Clear();
 					var partnerList = GetPartners();
 					comboPartner.DataSource = partnerList.Result.Select(p => p.Name).ToList();
-				}
+                    comboPartnerQr.DataSource = partnerList.Result.Select(p => p.Name).ToList();
+                }
             }
         }
 
@@ -90,6 +101,19 @@ namespace HinweisgeberApp
                     return true;
                 }
                 return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<Filiale>> GetFilialen()
+        {
+            try
+            {
+                return _context.Filiales.ToList();
             }
             catch (Exception ex)
             {
@@ -177,27 +201,40 @@ namespace HinweisgeberApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //// Get parameters from TextBoxes
-            //string parameter1 = txtParameter1.Text;
-            //string parameter2 = txtParameter2.Text;
+            int index = comboPartnerQr.SelectedIndex;
+            var partner = partnerList.ElementAt(index);
 
-            //// Concatenate parameters
-            //string url = $"http://gfi-hinweisgeber.de/{parameter1}/{parameter2}";
+            int index1 = comboFilialeQr.SelectedIndex;
+            var filiale = filialeList.ElementAt(index1);
+            // Get parameters from TextBoxes
+            string parameterPartner = partner.Id.ToString();
+            string parameterFiliale = filiale.Id.ToString();
 
-            //// Generate QR code
-            //BarcodeWriter barcodeWriter = new BarcodeWriter();
-            //barcodeWriter.Format = BarcodeFormat.QR_CODE;
-            //barcodeWriter.Options = new ZXing.Common.EncodingOptions
-            //{
-            //    Width = 300,
-            //    Height = 300
-            //};
+            // Concatenate parameters
+            string url = $"https://gfi-hinweisgeber.de/{parameterPartner}/{parameterFiliale}";
 
-            //// Convert to bitmap
-            //var qrCodeBitmap = barcodeWriter.Write(url);
+            GeneratedBarcode generatedBarcode = IronBarCode.BarcodeWriter.CreateBarcode(url,BarcodeEncoding.QRCode);
+            generatedBarcode.AddAnnotationTextAboveBarcode("GFI Hinweisgeber");
+            var filename = ("Partner" + partner.Name.Replace(" ","") + "Filiale" + filiale.AnsichtName.Replace(" ", "") + ".pdf").Replace(" ","");
+            generatedBarcode.SaveAsPdf(filename);
+        }
 
-            //// Display the QR code in PictureBox
-            //pictureBoxQRCode.Image = qrCodeBitmap;
+        private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
+        {
+
+        }
+
+        private void comboPartnerQr_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboPartnerQr.SelectedIndex != -1)
+            {
+                //var tmp = partnerList.Where(p => p.Name == comboPartnerQr.SelectedItem.)
+                int index = comboPartnerQr.SelectedIndex;
+                var partner = partnerList.ElementAt(index);
+                comboFilialeQr.DataSource = filialeList.Where(p => p.PartnerId == partner.Id).Select(p => p.AnsichtName).ToList();
+
+            }
+
         }
     }
 }
