@@ -211,12 +211,13 @@ namespace HinweisgeberApp
             string parameterFiliale = filiale.Id.ToString();
 
             // Concatenate parameters
-            string url = $"https://gfi-hinweisgeber.de/{parameterPartner}/{parameterFiliale}";
+            string url = $"https://gfi-hinweisgeber.de?paId={parameterPartner}&filialeId={parameterFiliale}";
 
             GeneratedBarcode generatedBarcode = IronBarCode.BarcodeWriter.CreateBarcode(url,BarcodeEncoding.QRCode);
             generatedBarcode.AddAnnotationTextAboveBarcode("GFI Hinweisgeber");
             var filename = ("Partner" + partner.Name.Replace(" ","") + "Filiale" + filiale.AnsichtName.Replace(" ", "") + ".pdf").Replace(" ","");
             generatedBarcode.SaveAsPdf(filename);
+            MessageBox.Show("Qr Code wurde generiert und als PDF exportiert");
         }
 
         private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
